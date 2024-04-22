@@ -58,4 +58,12 @@ app.get('/', (req, res) => {
   });
 });
 
+// Exercise 2: Create a nav bar
+
+app.get('/menu', (req, res) => {
+    res.render('menu.ejs', {
+        menu: RESTAURANT.menu
+    });
+});
+
 app.listen(3000);
