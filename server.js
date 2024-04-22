@@ -1,6 +1,8 @@
 const express = require('express');
 const app = express();
 
+app.listen(3000);
+
 const RESTAURANT = {
     name: 'The Green Byte Bistro',
     isOpen: true,
@@ -66,4 +68,12 @@ app.get('/menu', (req, res) => {
     });
 });
 
-app.listen(3000);
+// Exercise 3: Create a separate page for menu categories
+
+app.get('/menu/:category', (req, res) => {
+    const category = req.params.category;
+    res.render('category.ejs', {
+        menuItems: RESTAURANT.menu.filter((item) => item.category === req.params.category),
+        catName: category
+    });
+});
